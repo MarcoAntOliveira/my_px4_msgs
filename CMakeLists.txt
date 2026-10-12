@@ -12,6 +12,11 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+ind_packagem(my_px4_msgs REQUIRED)
+
+add_executable(node ml.cpp)
+ament_target_dependencies(node my_px4_msgs)
+target_link_libraries(node PRIVATE rclcpp::rclcpp ${std_msgs_TARGETS})
 
 
 # get all msg files
